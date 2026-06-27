@@ -981,6 +981,8 @@ function renderCards(){
     return true;
   });
   list.sort((a,b)=>{
+    const aSold=a.status==='sold'?1:0,bSold=b.status==='sold'?1:0;
+    if(aSold!==bSold)return aSold-bSold;
     if(sortMode==='new')return (b.sort_order||0)-(a.sort_order||0);
     if(sortMode==='old')return (a.sort_order||0)-(b.sort_order||0);
     if(sortMode==='price_high')return (b.thb||0)-(a.thb||0);
